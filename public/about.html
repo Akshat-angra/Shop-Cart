@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Shop-Cart</title>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        color: #121224;
+        background-color: #f4f6f9;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .container {
+        margin: 0 auto;
+        width: 90%;
+        max-width: 1100px;
+        padding: 40px;
+      }
+
+      .about-section {
+        background-color: #ffffff;
+        padding: 50px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin-bottom: 40px;
+        border-left: 4px solid #1e90ff;
+      }
+
+      .about-section h1 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 15px;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+
+      .about-section p {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 20px;
+        max-width: 850px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .about-section .highlight {
+        color: #1e90ff;
+        font-weight: bold;
+      }
+
+      .team-section h2 {
+        font-size: 2.2em;
+        color: #333;
+        margin-bottom: 25px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      .team-members {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .team-member {
+        width: 280px;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        border-top: 4px solid #1e90ff;
+      }
+
+      .team-member:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      .team-member h3 {
+        font-size: 1.4em;
+        color: #333;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .team-member p {
+        color: #777;
+        font-size: 1em;
+        margin-bottom: 5px;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="left">
+        <h1 class="logo">shop <span class="logoin">cart</span></h1>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Start browsing products..."
+            class="search-input"
+          />
+          <div class="dropdown" id="dropdown" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- <div class="notification">
+        <span
+          ><span class="icon">🎉</span> Limited Time Offer: 20% Off on Your
+          First Purchase!</span
+        >
+      </div> -->
+
+      <div class="right">
+        <ul class="icon-list">
+          <li><a href="/" id="ahov">Home</a></li>
+          <li>
+            <a href="/about.html" id="ahov">About Us</a>
+          </li>
+          <li>
+            <a href="/contact.html" id="ahov">Contact Us</a>
+          </li>
+          <li>
+            <i class="fas fa-sign-in-alt"></i>
+            <a href="/login" id="ahov">Login</a>
+          </li>
+          <li>
+            <i class="fas fa-user-plus"></i>
+            <a href="/register" id="ahov">Signup</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <section class="about-section">
+        <h1>About Shop-Cart</h1>
+        <p>
+          Welcome to <span class="highlight">Shop-Cart</span>, a trusted
+          platform for high-quality products across diverse categories such as
+          Electronics, Accessories, and Health & Personal Care. Our goal is to
+          deliver a premium online shopping experience.
+        </p>
+        <p>
+          We aim to be your reliable partner by offering a user-friendly
+          platform, outstanding product quality, and seamless customer service.
+        </p>
+      </section>
+      <section class="team-section">
+        <h2>Meet Our Leadership Team</h2>
+        <div class="team-members">
+          <div class="team-member">
+            <h3>Akshat Angra</h3>
+            <p>CEO & Founder</p>
+          </div>
+          <div class="team-member">
+            <h3>Aditya Sharma</h3>
+            <p>Chief Marketing Officer</p>
+          </div>
+          <div class="team-member">
+            <h3>Anirudh Tanwar</h3>
+            <p>Head of Operations</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>Shop-Cart</h3>
+          <p>
+            Your go-to platform for a seamless shopping experience. We offer a
+            curated selection of products with fast and secure delivery.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/faq">FAQs</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>
+            Get the latest updates on our exclusive offers and new arrivals.
+          </p>
+          <form class="newsletter-form" action="/subscribe" method="post">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-social">
+          <h3>Connect with Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Shop-Cart. All Rights Reserved. | Designed by Akshat Angra
+        </p>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/app.css" />
+    <style>
+      body {
+        background: linear-gradient(
+          257deg,
+          rgba(239, 237, 255, 0.8) 18.42%,
+          rgba(255, 255, 255, 0.8) 180.37%
+        );
+        font-family: "Manrope", system-ui;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .checkout-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .checkout-header h1 {
+        font-size: 36px;
+        color: #333;
+        font-weight: 700;
+        letter-spacing: 1px;
+        background: linear-gradient(90deg, #007bff, #28a745);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .order-summary,
+      .shipping-info,
+      .payment-info {
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        font-size: 26px;
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .total-amount {
+        font-size: 22px;
+        font-weight: 800;
+        color: #218838;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .form-group label {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: border-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: #007bff;
+        outline: none;
+        transform: scale(1.02);
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+      }
+
+      .form-group label::before {
+        content: url("https://example.com/icon.svg"); /* replace with icon path */
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      .btn {
+        background-color: #28a745;
+        color: white;
+        padding: 15px 25px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 600;
+        display: inline-block;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      .checkout-footer {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .checkout-footer a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .checkout-footer a:hover {
+        text-decoration: underline;
+      }
+
+      .form-group select {
+        appearance: none;
+        background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbD0iIzAwN0JGRiI+PHBhdGggZD0iTTAgMS43TDQuMjg2IDUuNTg2Yy4zOTguMzk4IDEuMDQzLjM5OCAxLjQ0MSAwTDkgMS43MUM5LjM5OC4zMDEgOC42MyAwIDggMEgxQy42OTkuMDAyIDAgLjMwMSAwIDEuNzEiLz48L3N2Zz4=")
+          no-repeat right 12px center;
+        background-size: 12px 6px;
+      }
+
+      .order-summary .summary-item:nth-last-child(1) {
+        border-bottom: none;
+      }
+
+      @media screen and (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+
+        .checkout-header h1 {
+          font-size: 28px;
+        }
+
+        h2 {
+          font-size: 22px;
+        }
+
+        .btn {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="checkout-header">
+        <h1>Hello, <%= user.fullName%></h1>
+        <h1>Checkout</h1>
+      </div>
+
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div class="summary-item">
+          <span>Product 1</span>
+          <span>$25.00</span>
+        </div>
+        <div class="summary-item">
+          <span>Product 2</span>
+          <span>$45.00</span>
+        </div>
+        <div class="summary-item total-amount">
+          <span>Total</span>
+          <span>$70.00</span>
+        </div>
+      </div>
+
+      <div class="shipping-info">
+        <h2>Shipping Information</h2>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your full name" />
+        </div>
+        <div class="form-group">
+          <label for="address">Shipping Address</label>
+          <input
+            type="text"
+            id="address"
+            placeholder="Enter your shipping address"
+          />
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Enter your city" />
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" id="state" placeholder="Enter your state" />
+        </div>
+        <div class="form-group">
+          <label for="zip">ZIP Code</label>
+          <input type="text" id="zip" placeholder="Enter your ZIP code" />
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country">
+            <option value="us">United States</option>
+            <option value="ca">Canada</option>
+            <option value="uk">United Kingdom</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="payment-info">
+        <h2>Payment Information</h2>
+        <div class="form-group">
+          <label for="card-name">Cardholder Name</label>
+          <input
+            type="text"
+            id="card-name"
+            placeholder="Enter cardholder name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="card-number">Card Number</label>
+          <input
+            type="text"
+            id="card-number"
+            placeholder="Enter your card number"
+          />
+        </div>
+        <div class="form-group">
+          <label for="expiry">Expiry Date</label>
+          <input type="text" id="expiry" placeholder="MM/YY" />
+        </div>
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="CVV" />
+        </div>
+      </div>
+
+      <button class="btn" type="submit">Complete Purchase</button>
+
+      <div class="checkout-footer">
+        <p>Having trouble? <a href="#">Contact support</a></p>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>Shop-Cart</h3>
+          <p>
+            Your go-to platform for a seamless shopping experience. We offer a
+            curated selection of products with fast and secure delivery.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/faq">FAQs</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>
+            Get the latest updates on our exclusive offers and new arrivals.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-social">
+          <h3>Connect with Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Shop-Cart. All Rights Reserved. | Designed by Akshat Angra
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

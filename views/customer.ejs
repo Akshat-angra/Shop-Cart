@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Customer List | Shop-Cart</title>
+    <link rel="stylesheet" href="/app.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap"
+            rel="stylesheet"
+    />
+    <style>
+        body {
+            font-family: "Manrope", sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e9eff1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            font-size: 2rem;
+            color: #275df5;
+            font-weight: 600;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .loading-container::after {
+            content: "Fetching Data";
+            animation: loadingDots 1.5s infinite linear;
+        }
+
+        @keyframes loadingDots {
+            0% {
+                content: "Fetching Data";
+            }
+            33% {
+                content: "Fetching Data.";
+            }
+            66% {
+                content: "Fetching Data..";
+            }
+            100% {
+                content: "Fetching Data...";
+            }
+        }
+
+        .customer-list {
+            max-width: 1200px;
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background-image: linear-gradient(90deg, #27ddb1 -32.8%, #6d4aff);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 18px;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #f1f1f1;
+            color: #121224;
+        }
+
+        .search-input::placeholder {
+            color: #aaa;
+        }
+
+        .search-input:focus {
+            border: solid 2px #007bff;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #e0f7fa;
+            cursor: pointer;
+        }
+
+        .no-customers {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #999;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .customer-list {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <script>
+        setTimeout(function () {
+            document.querySelector(".loading-container").style.display = "none";
+            document.querySelector(".customer-list").style.display = "block";
+        }, 3000);
+
+        function filterCustomers() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const rows = document.querySelectorAll(".customer-row");
+            let found = false;
+
+            rows.forEach((row) => {
+                const customerName = row.querySelector("td.customer-name").innerText.toLowerCase();
+                if (customerName.includes(input)) {
+                    row.style.display = "";
+                    found = true;
+                } else {
+                    row.style.display = "none";
+                }
+            });
+            const noRecordMessage = document.getElementById("noRecordMessage");
+            if (!found) {
+                if (!noRecordMessage) {
+                    const message = document.createElement("tr");
+                    message.id = "noRecordMessage";
+                    message.innerHTML = `
+    <td colspan="100%" style="
+      text-align: center;
+      color: #6c757d;
+      background-color: #f8f9fa;
+      border: 1px solid #dee2e6;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 20px;
+      border-radius: 8px;">
+      🚫 No customers match your search criteria. Try adjusting your search!
+    </td>`;
+                    document.querySelector("table tbody").appendChild(message);
+                }
+            } else {
+                if (noRecordMessage) {
+                    noRecordMessage.remove();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="loading-container"></div>
+<div class="customer-list">
+    <h1>Customers</h1>
+    <div class="search-container">
+        <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search by customer name..."
+                onkeyup="filterCustomers()"
+        />
+    </div>
+    <% if (customers.length === 0) { %>
+        <p class="no-customers">No customers found.</p>
+    <% } else { %>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% customers.forEach(customer => { %>
+                <tr
+                        class="customer-row"
+                        onclick="window.location.href='/customer/<%= customer.email %>'"
+                >
+                    <td class="customer-name"><%= customer.fullName %></td>
+                    <td><%= customer.email %></td>
+                    <td><%= customer.phoneNumber || 'N/A' %></td>
+                    <td><%= customer.status %></td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+</div>
+</body>
+</html>

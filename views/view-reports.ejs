@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Reports | Shop-Cart</title>
+    <link rel="stylesheet" href="/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Manrope", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f9fc;
+      }
+
+      /* Center the fetching data message in the page */
+      .loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100%;
+        font-size: 2rem;
+        color: #007bff;
+        font-weight: 600;
+        letter-spacing: 1px;
+        position: relative;
+      }
+
+      /* Adding animation to the fetching data text */
+      .loading-container::after {
+        content: "Fetching Data";
+        animation: loadingDots 1.5s infinite linear;
+      }
+
+      @keyframes loadingDots {
+        0% {
+          content: "Fetching Data";
+        }
+        33% {
+          content: "Fetching Data.";
+        }
+        66% {
+          content: "Fetching Data..";
+        }
+        100% {
+          content: "Fetching Data...";
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: none; /* Hide the content initially */
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        background-image: linear-gradient(90deg, #27ddb1 -32.8%, #6d4aff);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+      .button-container {
+        margin: 20px 0;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        color: #ffffff;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      #btn3 {
+        color: #121224;
+      }
+
+      .generate-report-button {
+        background-color: #28a745;
+      }
+
+      .generate-report-button:hover {
+        background-color: #218838;
+      }
+
+      .back-button {
+        background-color: #007bff;
+        margin-left: 10px;
+      }
+
+      .back-button:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        table {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+    <script>
+      // Show "Fetching Data..." for 3 seconds, then show the content
+      setTimeout(function () {
+        document.querySelector(".loading-container").style.display = "none";
+        document.querySelector(".container").style.display = "block";
+      }, 3000);
+    </script>
+  </head>
+  <body>
+    <!-- Fetching data message -->
+    <div class="loading-container"></div>
+
+    <!-- Hidden content container -->
+    <div class="container">
+      <h1>View Reports</h1>
+
+      <div class="button-container">
+        <a href="/generate-report" class="button generate-report-button"
+          >Generate New Report</a
+        >
+        <a href="/admin/dashboard" class="button back-button"
+          >Back to Dashboard</a
+        >
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Report ID</th>
+            <th>Report Type</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% reports.forEach(report => { %>
+          <tr>
+            <td><%= report.id %></td>
+            <td><%= report.type %></td>
+            <td><%= report.date.toLocaleString() %></td>
+            <td><%= report.status %></td>
+            <td>
+              <a href="/report/<%= report.id %>" class="button" id="btn3"
+                >View</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

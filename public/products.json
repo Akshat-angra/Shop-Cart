@@ -1,0 +1,574 @@
+{
+  "categories": [
+    {
+      "category_id": 1,
+      "category_name": "Electronics",
+      "products": [
+        {
+          "product_id": 1,
+          "name": "Smartphone",
+          "price": 299,
+          "discounted_price": 269,
+          "image": [
+            "https://th.bing.com/th/id/OIP.XbhXBbT7tszKHr-gr7cJVgAAAA?w=474&h=474&rs=1&pid=ImgDetMain",
+            "https://cdn.ipadizate.com/2023/09/iphone-15-pro-max.1694706222.0039.jpg",
+            "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1gZF1S.img?w=1920&h=1080&m=4&q=79",
+            "https://th.bing.com/th/id/OIP.ZS2mgoaE8-Vko_7yby-CTwAAAA?w=474&h=474&rs=1&pid=ImgDetMain"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "mobile",
+            "smartphone"
+          ],
+          "stock": 100,
+          "rating": 4.5,
+          "description": "A high-quality smartphone with a sleek design and powerful features."
+        },
+        {
+          "product_id": 2,
+          "name": "Laptop",
+          "price": 899,
+          "discounted_price": 799,
+          "image": [
+            "https://www.notebookcheck.net/fileadmin/Notebooks/Apple/MacBook_Pro_15_inch_2016/0_mbp15_4_3.jpg",
+            "https://cdn.shopify.com/s/files/1/0553/7470/8904/products/8513-8489ef88-103f-4355-bf78-99b9f7a12e33-None_600x.png",
+            "https://www.tapeteos.pl/data/media/494/big/macbook_pro_003_apple_air.jpg",
+            "https://th.bing.com/th/id/OIP.jw-hh-7JWvedyEv-2qekaQHaE3?rs=1&pid=ImgDetMain"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "laptop",
+            "technology"
+          ],
+          "stock": 50,
+          "rating": 4.7,
+          "description": "A high-performance laptop perfect for work, gaming, and entertainment."
+        },
+        {
+          "product_id": 3,
+          "name": "Smartwatch",
+          "price": 199,
+          "discounted_price": 179,
+          "image": [
+            "https://www.bhphotovideo.com/images/images2500x2500/apple_mj2x2ll_a_watch_sport_smartwatch_38mm_1187194.jpg",
+            "https://th.bing.com/th/id/OIP.nUcJcUIzTNwdw6XXgYlaIgAAAA?rs=1&pid=ImgDetMain",
+            "https://preview.free3d.com/img/2015/10/2205984817038755411/mhj8dpfm.jpg"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "wearable",
+            "smartwatch"
+          ],
+          "stock": 200,
+          "rating": 4.3,
+          "description": "A stylish smartwatch with fitness tracking and smart notifications."
+        },
+        {
+          "product_id": 4,
+          "name": "Tablet",
+          "price": 399,
+          "discounted_price": 359,
+          "image": [
+            "https://www.bhphotovideo.com/images/images2500x2500/apple_mxf22ll_a_11_ipad_pro_early_1553823.jpg",
+            "https://th.bing.com/th/id/OIP.kJCDCpm-e2Idvc8fnfpDGQHaHa?rs=1&pid=ImgDetMain",
+            "https://www.bhphotovideo.com/images/images2500x2500/apple_mhr03ll_a_11_ipad_pro_wifi_1636255.jpg",
+            "https://th.bing.com/th/id/OIP.Eh5VdpuwGyje6IEJfrqTlQHaHa?w=500&h=500&rs=1&pid=ImgDetMain"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "tablet",
+            "portable"
+          ],
+          "stock": 120,
+          "rating": 4.6,
+          "description": "A sleek tablet with a sharp display and long battery life for entertainment and work."
+        },
+        {
+          "product_id": 5,
+          "name": "Headphones",
+          "price": 89,
+          "discounted_price": 79,
+          "image": [
+            "https://www.marshallheadphones.com/on/demandware.static/-/Sites-zs-master-catalog/default/dw0ba44ae4/images/marshall/headphones/monitor/medium/pl-marshall-headphones-monitor-black-1700x1700.png",
+            "https://www.marshallheadphones.com/on/demandware.static/-/Sites-zs-master-catalog/default/dwb7bc1a6b/images/marshall/headphones/major-iii-bt/white/medium/pl-marshall-headphones-major-iii-bluetooth-white-1700x1700.png",
+            "https://th.bing.com/th/id/OIP.3qN2fzRdAmRliEdPeCMDdgAAAA?rs=1&pid=ImgDetMain",
+            "https://img.kingpowerclick.com/cdn-cgi/image/format=auto/kingpower-com/image/upload/w_640,h_640,f_auto/v1539237527/prod/8199169-L5.jpg"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "audio",
+            "headphones"
+          ],
+          "stock": 150,
+          "rating": 4.2,
+          "description": "Wireless headphones with excellent sound quality and comfort."
+        },
+        {
+          "product_id": 6,
+          "name": "Smart TV",
+          "price": 499,
+          "discounted_price": 459,
+          "image": [
+            "https://th.bing.com/th/id/R.abafe3d06a09a732df5abcf4c43fec15?rik=zc9SNVXQrDvssQ&riu=http%3a%2f%2fwww.flatpanelshd.com%2fpictures%2flg2013smarttv-1l.jpg&ehk=sosDqCiLAFc9Q0kWz%2fgEjh%2bFX0FYIQjfdjkUKUooPuk%3d&risl=&pid=ImgRaw&r=0",
+            "https://www.lg.com/ae/images/tvs/md06140657/gallery/large01_V2.jpg",
+            "https://otcer.ph/wp-content/uploads/2019/12/LGTV10-P1.jpg",
+            "https://cdn.mos.cms.futurecdn.net/QSZz8nmqc8oewfFDvi7ueG-1200-80.jpg"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "tv",
+            "smart"
+          ],
+          "stock": 80,
+          "rating": 4.8,
+          "description": "A 55-inch smart TV with 4K resolution and a variety of streaming options."
+        },
+        {
+          "product_id": 7,
+          "name": "Camera",
+          "price": 349,
+          "discounted_price": 319,
+          "image": [
+            "https://www.bestreviewguide.com/images/category/DSLR%20Cameras%20-%20What%20To%20Look%20For.jpeg",
+            "https://dlsserve.com/wp-content/uploads/2020/10/best-beginner-dslr-cameras-2020-the-10-finest-dslrs-for-new-photographers-canon-eos-rebel-t8i-850d-scaled.jpg",
+            "https://i0.wp.com/www.funkykit.com/wp-content/uploads/2017/10/nikon-d3400-a.jpg?fit=1280%2C853&ssl=1"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "photography",
+            "camera"
+          ],
+          "stock": 60,
+          "rating": 4.4,
+          "description": "A DSLR camera for stunning photography with great low-light performance."
+        },
+        {
+          "product_id": 8,
+          "name": "Bluetooth Speaker",
+          "price": 59,
+          "discounted_price": 49,
+          "image": [
+            "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6423/6423554ld.jpg",
+            "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5733/5733402cv14d.jpg",
+            "https://ik.imagekit.io/gcpj4gdmguq/wp-content/uploads/2019/10/JBL-Flip-3-Stealth-Waterproof-Portable-Bluetooth-Speaker-with-Rich-Deep-Bass-Black-Without-Mic.jpg"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "audio",
+            "speaker"
+          ],
+          "stock": 300,
+          "rating": 4.1,
+          "description": "Portable Bluetooth speaker with deep bass and long battery life."
+        },
+        {
+          "product_id": 9,
+          "name": "Power Bank",
+          "price": 29,
+          "discounted_price": 24,
+          "image": [
+            "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6423/6423554ld.jpg",
+            "https://th.bing.com/th/id/R.de484795443b9c4524af4f5fcaf28469?rik=f6OD1%2fH8SyU3Pg&riu=http%3a%2f%2fmedia.gadgetsin.com%2f2015%2f09%2fhyperjuice_power_bank_and_magic_box_for_macbook_2.jpg&ehk=Zewave7Ng9UHYBHyZ63oUeRTNzbS%2fgjpfTaHFgOl4pY%3d&risl=&pid=ImgRaw&r=0"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "accessory",
+            "power bank"
+          ],
+          "stock": 500,
+          "rating": 4.0,
+          "description": "Compact power bank to charge your devices on the go."
+        },
+        {
+          "product_id": 10,
+          "name": "Gaming Console",
+          "price": 499,
+          "discounted_price": 459,
+          "image": [
+            "https://s.yimg.com/uu/api/res/1.2/LBRgeGZAwDPBCBk3gvRlvw--~B/Zmk9c3RyaW07aD03MjA7dz0xMjgwO2FwcGlkPXl0YWNoeW9u/https://s.yimg.com/os/creatr-uploaded-images/2023-05/5a95e9e0-edae-11ed-9efe-f952d9118102",
+            "https://cdn.mos.cms.futurecdn.net/wsceyCN8nc6DFtaM83xuf7.jpg"
+          ],
+          "category_id": 1,
+          "tags": [
+            "electronics",
+            "gaming",
+            "console"
+          ],
+          "stock": 70,
+          "rating": 4.6,
+          "description": "Next-gen gaming console for an immersive gaming experience."
+        }
+      ]
+    },
+    {
+      "category_id": 2,
+      "category_name": "Clothing",
+      "products": [
+        {
+          "product_id": 11,
+          "name": "T-Shirt",
+          "price": 19,
+          "discounted_price": 15,
+          "image": [
+            "https://th.bing.com/th/id/OIP.DSjZPk9uy01_f2ox4Q5QPgAAAA?rs=1&pid=ImgDetMain",
+            "https://cdn1.bambinifashion.com/img/p/1/8/2/7/6/1/182761--product.jpg"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "t-shirt",
+            "casual"
+          ],
+          "stock": 300,
+          "rating": 4.3,
+          "description": "Comfortable cotton T-shirt perfect for casual wear."
+        },
+        {
+          "product_id": 12,
+          "name": "Jeans",
+          "price": 49,
+          "discounted_price": 39,
+          "image": [
+            "https://images-na.ssl-images-amazon.com/images/I/71ZGV2PWJCL._UL1500_.jpg",
+            "https://cdnb.lystit.com/photos/a204-2015/03/16/quiksilver-light-blue-stonewash-mid-rise-jeans-blue-product-3-062969081-normal.jpeg"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "denim",
+            "jeans"
+          ],
+          "stock": 250,
+          "rating": 4.5,
+          "description": "Classic blue jeans with a modern fit."
+        },
+        {
+          "product_id": 13,
+          "name": "Jacket",
+          "price": 79,
+          "discounted_price": 69,
+          "image": [
+            "https://i.pinimg.com/736x/07/fc/ff/07fcffd394eab67978e3de901d7aee2f.jpg",
+            "https://thegenuineleather.com/wp-content/uploads/2019/08/Black-leather-jacket-for-men-1.jpg"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "outerwear",
+            "jacket"
+          ],
+          "stock": 100,
+          "rating": 4.6,
+          "description": "Warm and stylish jacket for cold weather."
+        },
+        {
+          "product_id": 14,
+          "name": "Sweater",
+          "price": 39,
+          "discounted_price": 34,
+          "image": [
+            "https://target.scene7.com/is/image/Target/GUEST_dd46845a-d7ff-4696-8f27-f2dad5bb5c70?wid=488&hei=488&fmt=pjpeg",
+            "https://th.bing.com/th/id/R.c5cfde480cac8bf0a19c41504e538c70?rik=rBTW6p3u9t3lGw&riu=http%3a%2f%2fc.shld.net%2frpx%2fi%2fs%2fi%2fspin%2f-122%2fprod_2172535712%3f%3fhei%3d64%26wid%3d64%26qlt%3d50&ehk=5emItVIktP4wT4yjIJVLV%2fV9ylpFewNiwciC5wGLTmg%3d&risl=&pid=ImgRaw&r=0"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "sweater",
+            "winter"
+          ],
+          "stock": 150,
+          "rating": 4.2,
+          "description": "Soft knitted sweater to keep you cozy in the winter."
+        },
+        {
+          "product_id": 15,
+          "name": "Shorts",
+          "price": 25,
+          "discounted_price": 20,
+          "image": [
+            "https://www.surfstitch.com/on/demandware.static/-/Sites-ss-master-catalog/default/dwcfc3b123/images/ZM-1106PBLUS/PIGMENT-BLUE-STEEL-MENS-CLOTHING-ZIGGY-SHORTS-ZM-1106PBLUS_1.JPG",
+            "https://www.surfstitch.com/on/demandware.static/-/Sites-ss-master-catalog/default/dwaf848a6e/images/W-901234-EY1CYAN/CYANIDE-MENS-CLOTHING-WRANGLER-SHORTS-W-901234-EY1CYAN_2.JPG"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "summer",
+            "shorts"
+          ],
+          "stock": 200,
+          "rating": 4.0,
+          "description": "Lightweight and breathable shorts for hot weather."
+        },
+        {
+          "product_id": 16,
+          "name": "Hat",
+          "price": 15,
+          "discounted_price": 12,
+          "image": [
+            "https://th.bing.com/th/id/OIP.h3rU4TjgO2O9P2Xm5BN2mQAAAA?rs=1&pid=ImgDetMain",
+            "https://di2ponv0v5otw.cloudfront.net/posts/2021/07/25/60fd110273672058a858b792/m_60fd11d8a4de418c07e76058.jpeg"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "accessory",
+            "hat"
+          ],
+          "stock": 150,
+          "rating": 3.8,
+          "description": "Stylish hat to complement your casual look."
+        },
+        {
+          "product_id": 17,
+          "name": "Scarf",
+          "price": 12,
+          "discounted_price": 9,
+          "image": [
+            "https://pngimg.com/d/scarf_PNG19.png",
+            "https://e7.pngegg.com/pngimages/767/268/png-clipart-scarf-scarf.png"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "winter",
+            "scarf"
+          ],
+          "stock": 180,
+          "rating": 4.1,
+          "description": "Soft scarf to keep you warm in chilly weather."
+        },
+        {
+          "product_id": 18,
+          "name": "Socks",
+          "price": 5,
+          "discounted_price": 3,
+          "image": [
+            "https://i8.amplience.net/i/jpl/jd_396834_a?qlt=92",
+            "https://i5.walmartimages.com/asr/7a1ac0f9-be09-46c8-b515-e371cf338a78_1.1852b25fa468fd215ab8fa3a19d09c86.jpeg"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "accessory",
+            "socks"
+          ],
+          "stock": 500,
+          "rating": 4.0,
+          "description": "Comfortable socks in various colors and sizes."
+        },
+        {
+          "product_id": 19,
+          "name": "Boots",
+          "price": 89,
+          "discounted_price": 79,
+          "image": [
+            "https://th.bing.com/th/id/OIP._wWYYvdsK2e_R4VNVgIWLQHaKw?rs=1&pid=ImgDetMain",
+            "https://www.lehighoutfitters.com/on/demandware.static/-/Sites-Master-Product-catalog-en/default/dw27bb3e0c/images/G9134_EXTRALARGE.jpg"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "footwear",
+            "boots"
+          ],
+          "stock": 120,
+          "rating": 4.4,
+          "description": "Durable boots for outdoor activities."
+        },
+        {
+          "product_id": 20,
+          "name": "Sweatpants",
+          "price": 40,
+          "discounted_price": 34,
+          "image": [
+            "https://i5.walmartimages.com/asr/ba633a12-af7e-473a-84d8-6a74dbb5b359_1.f9cd38351f53005d9a6e53f74d2b21cc.jpeg",
+            "https://th.bing.com/th/id/OIP.OGxj8uv1iRjpeH-SSbOYEwHaJZ?rs=1&pid=ImgDetMain"
+          ],
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "sportswear",
+            "sweatpants"
+          ],
+          "stock": 250,
+          "rating": 4.2,
+          "description": "Comfortable sweatpants for working out or lounging."
+        }
+      ]
+    },
+    {
+      "category_id": 3,
+      "category_name": "Accessories",
+      "products": [
+        {
+          "product_id": 21,
+          "name": "Sunglasses",
+          "price": 50,
+          "discounted_price": 45,
+          "image": [
+            "https://th.bing.com/th/id/OIP.OGxj8uv1iRjpeH-SSbOYEwHaJZ?rs=1&pid=ImgDetMain",
+            "https://product-images.therealreal.com/LOU615586_2_enlarged.jpg",
+            "https://th.bing.com/th/id/OIP.PhB4Xo5GTYGXHgtfxZStGgAAAA?rs=1&pid=ImgDetMain"
+          ],
+          "category_id": 3,
+          "tags": [
+            "accessories",
+            "sunglasses",
+            "fashion"
+          ],
+          "stock": 200,
+          "rating": 4.3,
+          "description": "Trendy sunglasses to protect your eyes and elevate your style."
+        },
+        {
+          "product_id": 22,
+          "name": "Handbag",
+          "price": 120,
+          "discounted_price": 99,
+          "image": [
+            "https://images-na.ssl-images-amazon.com/images/I/91Q8hzEsv-L._AC_UL1500_.jpg",
+            "https://images-static.nykaa.com/media/catalog/product/9/4/946d85aehlz188pnk_2.jpg"
+          ],
+          "category_id": 3,
+          "tags": [
+            "accessories",
+            "bag",
+            "handbag"
+          ],
+          "stock": 80,
+          "rating": 4.6,
+          "description": "Luxury handbag with ample storage and an elegant design."
+        },
+        {
+          "product_id": 23,
+          "name": "Watch",
+          "price": 200,
+          "discounted_price": 180,
+          "image": [
+            "https://watchesbysjx.com/wp-content/uploads/2021/07/audemars-piguet-Royal-Oak-Frosted-Gold-Double-Balance-Wheel-Openworked-41-mm-15412-1.jpg",
+            "https://wristreview.com/wp-content/uploads/2021/07/audemars-piguet-Royal-Oak-Frosted-Gold-Double-Balance-Wheel-Openworked-41-mm-15412-3.jpg"
+          ],
+          "category_id": 3,
+          "tags": [
+            "accessories",
+            "watch",
+            "luxury"
+          ],
+          "stock": 100,
+          "rating": 4.8,
+          "description": "Classic wristwatch with a leather strap and a timeless design."
+        },
+        {
+          "product_id": 24,
+          "name": "Wallet",
+          "price": 30,
+          "discounted_price": 25,
+          "image": [
+            "https://n1.sdlcdn.com/imgs/e/y/o/WildHorn-Genuine-Leather-Wallet-23-SDL108156242-1-04e93.jpg",
+            "https://th.bing.com/th/id/OIP.c8UA7R59qT7vmYBORUyVvAHaHa?rs=1&pid=ImgDetMain"
+          ],
+          "category_id": 3,
+          "tags": [
+            "accessories",
+            "wallet",
+            "leather"
+          ],
+          "stock": 300,
+          "rating": 4.2,
+          "description": "Compact leather wallet with multiple compartments."
+        }
+      ]
+    },
+    {
+      "category_id": 4,
+      "category_name": "Health & Personal Care",
+      "products": [
+        {
+          "product_id": 25,
+          "name": "Shampoo",
+          "price": 10,
+          "discounted_price": 8,
+          "image": [
+            "https://www.byrdie.com/thmb/2_StIwiboKhwe6WiQW3A5_PCjpc=/3000x3000/filters:no_upscale():max_bytes(150000):strip_icc()/1cfaad9e-be47-4755-8d89-9dd27eaf0095_1.3ecc0d85625d5020c4f9807b4d5e7c96-520e913cbf7448878006fb529447fed2.jpg",
+            "https://th.bing.com/th/id/R.ff57ec2668b9a85b3235286e3187c10b?rik=K%2bRdbB9ANnmBOQ&riu=http%3a%2f%2fpics2.ds-static.com%2fprodimg%2f413624%2f300.JPG&ehk=0hDQyvppHkD1DUw4Xtp6Lk7HHYZM8jU1CWPA9ztk8X8%3d&risl=&pid=ImgRaw&r=0"
+          ],
+          "category_id": 4,
+          "tags": [
+            "health",
+            "care",
+            "shampoo"
+          ],
+          "stock": 500,
+          "rating": 4.5,
+          "description": "Gentle shampoo for strong and healthy hair."
+        },
+        {
+          "product_id": 26,
+          "name": "Moisturizer",
+          "price": 15,
+          "discounted_price": 12,
+          "image": [
+            "https://i5.walmartimages.com/asr/6a2b5b20-cc7a-4890-bf0b-e79023926167.d75c47eed3e27c4691a5c12f346fd529.jpeg",
+            "https://i5.walmartimages.com/asr/6a2b5b20-cc7a-4890-bf0b-e79023926167.d75c47eed3e27c4691a5c12f346fd529.jpeg"
+          ],
+          "category_id": 4,
+          "tags": [
+            "health",
+            "care",
+            "skin"
+          ],
+          "stock": 400,
+          "rating": 4.4,
+          "description": "Lightweight moisturizer to keep your skin hydrated all day."
+        },
+        {
+          "product_id": 27,
+          "name": "Face Wash",
+          "price": 8,
+          "discounted_price": 7,
+          "image": [
+            "https://images-na.ssl-images-amazon.com/images/I/61GhqECYBuL._SL1200_.jpg",
+            "https://www.bigbasket.com/media/uploads/p/l/40120535-5_2-biotique-face-wash-bio-honey-gel-refreshing-for-all-skin-types.jpg"
+          ],
+          "category_id": 4,
+          "tags": [
+            "health",
+            "care",
+            "face wash"
+          ],
+          "stock": 600,
+          "rating": 4.3,
+          "description": "Refreshing face wash for clear and radiant skin."
+        },
+        {
+          "product_id": 28,
+          "name": "Fitness Tracker",
+          "price": 99,
+          "discounted_price": 89,
+          "image": [
+            "https://www.bigbasket.com/media/uploads/p/l/40120535-5_2-biotique-face-wash-bio-honey-gel-refreshing-for-all-skin-types.jpg",
+            "https://th.bing.com/th/id/R.d85c46180f70ee6bc9ed1716d2b90757?rik=h6aUdcrN1ZR9aQ&riu=http%3a%2f%2fcontent.backcountry.com%2fimages%2fitems%2f900%2fPOL%2fPOL19AD%2fWH.jpg&ehk=5p9TGyOD44pYYNg%2f7JGDLA4lRQgvQhK3Eh%2b6pg8nvPw%3d&risl=&pid=ImgRaw&r=0"
+          ],
+          "category_id": 4,
+          "tags": [
+            "health",
+            "fitness",
+            "tracker"
+          ],
+          "stock": 150,
+          "rating": 4.7,
+          "description": "Fitness tracker to monitor your health and daily activity."
+        }
+      ]
+    }
+  ]
+}

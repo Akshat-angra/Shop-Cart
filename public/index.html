@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop-Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="app.css" />
+    <style>
+      .product-container {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .fancy-hero {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50vw;
+        padding: 40px;
+        background: url("images/1hero.webp");
+        background-size: cover;
+        background-position: center;
+        color: #121224;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .fancy-hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+      }
+
+      .hero-text {
+        max-width: 500px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .hero-text h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: #121224;
+        opacity: 0.8;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        padding: 15px 40px;
+        background: linear-gradient(45deg, #ff6f91, #ff4b5c);
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 8px 15px rgba(255, 75, 92, 0.4);
+        transition: all 0.4s ease;
+        font-size: 1.1rem;
+      }
+
+      .cta-button i {
+        margin-left: 10px;
+        font-size: 1.2rem;
+        animation: bounce 2s infinite;
+      }
+
+      .cta-button:hover {
+        background: #ff4b5c;
+        transform: translateY(-5px);
+        box-shadow: 0 12px 20px rgba(255, 75, 92, 0.6);
+      }
+
+      .image-collage {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        position: relative;
+      }
+
+      .collage-img {
+        width: 190px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .collage-img:hover {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .floating-bubbles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .bubble {
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        animation: floatUp 10s infinite ease-in-out;
+        opacity: 0.7;
+      }
+
+      .bubble1 {
+        width: 80px;
+        height: 80px;
+        left: 20%;
+        animation-duration: 12s;
+      }
+
+      .chat-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #00bfa5;
+        color: white;
+        padding: 16px;
+        border-radius: 50%;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        z-index: 1000;
+        transition: background-color 0.3s ease;
+      }
+
+      .chat-button:hover {
+        background-color: #5cae95;
+      }
+
+      .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        width: 350px;
+        max-width: 90%;
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        overflow: hidden;
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .chat-header {
+        background-color: #00bfa5;
+        color: white;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .header-text {
+        margin: 0;
+      }
+
+      .close-chat-button {
+        background-color: transparent;
+        color: #ffffff;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .chat-content {
+        padding: 20px;
+        height: 250px;
+        overflow-y: auto;
+        font-size: 14px;
+        color: #121224;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-content .message {
+        margin-bottom: 15px;
+        padding: 12px;
+        border-radius: 10px;
+        max-width: 75%;
+        font-size: 15px;
+      }
+
+      .user-message {
+        background-color: #e7f8f3;
+        margin-left: auto;
+        text-align: right;
+      }
+
+      .chatbot-message {
+        background-color: #f7f7f7;
+        margin-right: auto;
+        text-align: left;
+      }
+
+      .chat-input {
+        display: flex;
+        padding: 10px 20px;
+        background-color: #f5f5f5;
+        border-radius: 0 0 12px 12px;
+      }
+
+      .chat-input input {
+        width: 80%;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+      }
+
+      .chat-input input:focus {
+        outline: none;
+        border-color: #6bd3b1;
+      }
+
+      .send-button {
+        background-color: #6bd3b1;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .send-button:hover {
+        background-color: #00bfa5;
+      }
+
+      .chat-popup.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .chat-content::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .chat-content::-webkit-scrollbar-thumb {
+        background: #00bfa5;
+        border-radius: 3px;
+      }
+
+      .chat-content::-webkit-scrollbar-track {
+        background: #f7f7f7;
+      }
+
+      .bubble2 {
+        width: 100px;
+        height: 100px;
+        left: 50%;
+        animation-duration: 15s;
+      }
+
+      .bubble3 {
+        width: 60px;
+        height: 60px;
+        left: 80%;
+        animation-duration: 10s;
+      }
+
+      .bubble4 {
+        width: 120px;
+        height: 120px;
+        left: 30%;
+        animation-duration: 18s;
+      }
+
+      @keyframes floatUp {
+        0% {
+          bottom: -20%;
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(30px);
+        }
+        100% {
+          bottom: 120%;
+          transform: translateX(-30px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .fancy-hero {
+          background: url("images/1hero.webp");
+          background-size: cover;
+          background-position: center;
+        }
+
+        .fancy-hero-content {
+          display: none !important;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+
+        .collage-img {
+          width: 140px;
+          height: 140px;
+        }
+
+        .bubble {
+          display: none;
+        }
+      }
+
+      .usp-section {
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .usp-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .usp-heading {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 40px;
+      }
+
+      .usp-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        align-items: start;
+      }
+
+      .usp-item {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      #usp1 {
+        border-right: 3px solid #00bfa5;
+        border-bottom: 3px solid #00bfa5;
+      }
+
+      #usp2 {
+        border-left: 3px solid #00bfa5;
+        border-bottom: 3px solid #00bfa5;
+      }
+
+      #usp3 {
+        border-right: 3px solid #00bfa5;
+        border-top: 3px solid #00bfa5;
+      }
+
+      #usp4 {
+        border-top: 3px solid #00bfa5;
+        border-left: 3px solid #00bfa5;
+      }
+
+      .usp-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .usp-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: #3498db;
+      }
+
+      .usp-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 10px;
+      }
+
+      .usp-description {
+        font-size: 1rem;
+        color: #6c7a89;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
+        .usp-items {
+          grid-template-columns: 1fr;
+        }
+
+        .usp-heading {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="left">
+        <h1 class="logo">shop <span class="logoin">cart</span></h1>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Start browsing products..."
+            class="search-input"
+          />
+          <div class="dropdown" id="dropdown" style="display: none"></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <ul class="icon-list">
+          <li><a href="/" id="ahov">Home</a></li>
+          <li>
+            <a href="/about.html" id="ahov">About Us</a>
+          </li>
+          <li>
+            <a href="/contact.html" id="ahov">Contact Us</a>
+          </li>
+          <li>
+            <i class="fas fa-sign-in-alt"></i>
+            <a href="/login" id="ahov">Login</a>
+          </li>
+          <li>
+            <i class="fas fa-user-plus"></i>
+            <a href="/register" id="ahov">Signup</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="close-icon" id="close-icon" onclick="toggleMenu()">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+
+    <div id="chat-button" class="chat-button">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div id="chat-popup" class="chat-popup">
+      <div class="chat-header">
+        <span class="header-text">How can we assist you?</span>
+        <button id="close-chat" class="close-chat-button">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div id="chat-content" class="chat-content">
+        <div class="construction-message">
+          <p
+            style="
+              text-align: center;
+              font-size: 18px;
+              font-weight: bold;
+              color: #6bd3b1;
+            "
+          >
+            <i class="fas fa-cogs"></i> This feature is currently under
+            construction. <br />
+            Please check back later! <i class="fas fa-clock"></i>
+          </p>
+        </div>
+      </div>
+      <div id="chat-content" class="chat-content"></div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask us anything..." />
+        <button id="send-message" class="send-button">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+
+    <section class="fancy-hero">
+      <div class="fancy-hero-content">
+        <div class="hero-text">
+          <h1>Elevate Your Shopping Experience</h1>
+          <p>
+            Discover trends, grab amazing deals, and explore our exclusive
+            collections curated just for you!
+          </p>
+          <a href="/user/dashboard" class="cta-button">
+            Shop Now <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="image-collage">
+          <img
+            src="https://applestorelk.com/wp-content/uploads/2022/10/Apple-iPhone-14-Pro-Max.jpg"
+            alt="Product 1"
+            class="collage-img img1"
+          />
+          <img
+            src="https://www.ipackdesign.com/wp-content/uploads/2020/11/oats-meal-packet-design-3.jpg"
+            alt="Product 2"
+            class="collage-img img2"
+          />
+          <img
+            src="https://c.pxhere.com/images/8a/7f/65fbd5583a70d600f409b62eca79-1611896.jpg!d"
+            alt="Product 3"
+            class="collage-img img3"
+          />
+          <img
+            src="https://www.bhphotovideo.com/images/images2500x2500/apple_mj2x2ll_a_watch_sport_smartwatch_38mm_1187194.jpg"
+            alt="Product 4"
+            class="collage-img img4"
+          />
+          <div class="floating-bubbles">
+            <div class="bubble bubble1"></div>
+            <div class="bubble bubble2"></div>
+            <div class="bubble bubble3"></div>
+            <div class="bubble bubble4"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="usp-section">
+      <div class="usp-container">
+        <h2 class="usp-heading">Why Shop With Us?</h2>
+        <div class="usp-items">
+          <div class="usp-item" id="usp1">
+            <span class="usp-icon">🛒</span>
+            <h3 class="usp-title">Wide Range of Products</h3>
+            <p class="usp-description">
+              From the latest tech gadgets to everyday essentials.
+            </p>
+          </div>
+          <div class="usp-item" id="usp2">
+            <span class="usp-icon">💰</span>
+            <h3 class="usp-title">Exclusive Discounts</h3>
+            <p class="usp-description">
+              Enjoy amazing savings with our special offers.
+            </p>
+          </div>
+          <div class="usp-item" id="usp3">
+            <span class="usp-icon">🚚</span>
+            <h3 class="usp-title">Fast and Reliable Shipping</h3>
+            <p class="usp-description">
+              Get your orders delivered right to your doorstep.
+            </p>
+          </div>
+          <div class="usp-item" id="usp4">
+            <span class="usp-icon">🛡️</span>
+            <h3 class="usp-title">Secure Payment Options</h3>
+            <p class="usp-description">
+              Shop with peace of mind with our secure payment methods.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <a href="/api/products" aria-label="fetched products from database" class="fetched">Check Products</a> -->
+    <h1 class="heading">Explore products</h1>
+    <div id="product-container"></div>
+    <div class="loadbtn">
+      <button
+        class="showMore"
+        aria-label="show more products"
+        id="loadMore"
+        onclick="loadMoreCategories()"
+      >
+        Load More
+      </button>
+    </div>
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+      <i class="fas fa-caret-up scroll-icon"></i>
+    </button>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>Shop-Cart</h3>
+          <p>
+            Your go-to platform for a seamless shopping experience. We offer a
+            curated selection of products with fast and secure delivery.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/faq">FAQs</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>
+            Get the latest updates on our exclusive offers and new arrivals.
+          </p>
+          <form class="newsletter-form" action="/subscribe" method="post">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-social">
+          <h3>Connect with Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-b">
+        <p>
+          &copy; 2024 Shop-Cart. All Rights Reserved. | Designed by Akshat Angra
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+      document.getElementById("chat-button").onclick = function () {
+        document.getElementById("chat-popup").classList.add("show");
+      };
+
+      document.getElementById("close-chat").onclick = function () {
+        document.getElementById("chat-popup").classList.remove("show");
+      };
+
+      document.getElementById("send-message").onclick = function () {
+        const userMessage = document.getElementById("user-input").value;
+        if (userMessage.trim() !== "") {
+          displayUserMessage(userMessage);
+          document.getElementById("user-input").value = "";
+          fetchChatbotResponse(userMessage);
+        }
+      };
+
+      function displayUserMessage(message) {
+        const messageElement = document.createElement("div");
+        messageElement.className = "message user-message";
+        messageElement.textContent = message;
+        document.getElementById("chat-content").appendChild(messageElement);
+        scrollToBottom();
+      }
+
+      function displayChatbotMessage(message) {
+        const messageElement = document.createElement("div");
+        messageElement.className = "message chatbot-message";
+        messageElement.textContent = message;
+        document.getElementById("chat-content").appendChild(messageElement);
+        scrollToBottom();
+      }
+
+      function scrollToBottom() {
+        const chatContent = document.getElementById("chat-content");
+        chatContent.scrollTop = chatContent.scrollHeight;
+      }
+
+      function fetchChatbotResponse(userMessage) {
+        const apiKey = "YOUR_OPENAI_API_KEY";
+        fetch("https://api.openai.com/v1/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${apiKey}`,
+          },
+          body: JSON.stringify({
+            model: "text-davinci-003",
+            prompt: userMessage,
+            max_tokens: 150,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const chatbotResponse = data.choices[0].text.trim();
+            displayChatbotMessage(chatbotResponse);
+          })
+          .catch((error) => {
+            displayChatbotMessage(
+              "Sorry, I couldn't understand that. Please try again."
+            );
+            console.error("Error:", error);
+          });
+      }
+
+      window.onscroll = function () {
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        if (
+          document.body.scrollTop > 100 ||
+          document.documentElement.scrollTop > 100
+        ) {
+          scrollTopBtn.style.display = "flex";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      };
+      scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+    </script>
+  </body>
+</html>

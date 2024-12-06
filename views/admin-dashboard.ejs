@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shop-Cart | Admin-Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/app.css"/>
+    <style>
+        .main {
+            text-decoration: none;
+            color: #1f4e79;
+        }
+
+        .admin-container {
+            padding: 20px;
+            display: flex;
+            background-color: #f5f8fb;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            margin-right: 15px;
+            padding: 20px;
+            background-color: #2a3f54;
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .sidebar-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin: 15px 0;
+        }
+
+        .sidebar-menu a {
+            color: #c0c7d1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            color: #6bb5ff;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #1f4e79;
+            color: #ffffff;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #d0d7de;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1f4e79;
+        }
+
+        .logout-btn {
+            background-color: #d9534f;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c9302c;
+        }
+
+        .logout-btn a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 18px;
+            margin-top: 15px;
+        }
+
+        .stat-card {
+            background-color: #e8f0fe;
+            color: #333;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        .stat-card h3 {
+            color: #1f4e79;
+        }
+
+        .count-wrapper h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .count-wrapper.no-customers h2 {
+            color: #f44336;
+        }
+
+        .info-text {
+            font-size: 16px;
+            color: #717b9e;
+            font-style: italic;
+        }
+
+        .recent-activity h2 {
+            color: #1f4e79;
+            margin: 15px 0 15px 0;
+        }
+
+        .recent-activity table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .recent-activity th,
+        .recent-activity td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e7eaed;
+        }
+
+        .recent-activity th {
+            background-color: #f7f9fc;
+            color: #1f4e79;
+        }
+
+        .no-activity {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .no-activity-icon {
+            background-color: #ffffff;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 10px;
+            opacity: 0.6;
+            display: inline-block;
+        }
+
+        .no-activity p {
+            font-size: 1em;
+            color: #717b9e;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .main-content {
+                padding: 10px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .navbar .left,
+        .navbar .right {
+            display: flex;
+        }
+
+        .icon-list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .icon-list li {
+            margin-left: 20px;
+        }
+
+        .icon-list a {
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon-list i {
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                display: none;
+            }
+
+            .icon-list {
+                flex-direction: column;
+                display: none;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #e0f7fa;
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+            }
+
+            .main-content {
+                margin-top: 20px;
+            }
+
+            .icon-list li {
+                margin: 15px 0;
+            }
+
+            .hamburger {
+                color: #121224;
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+                margin-top: 12px;
+            }
+        }
+
+        .navbar .icon-list.show {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+<div class="navbar" id="admin-nav">
+    <div class="left">
+        <h1 class="logo">shop <span class="logoin">cart</span></h1>
+        <div class="search-container">
+            <input type="text" placeholder="Start browsing here..." class="search-input"/>
+            <div class="dropdown" id="dropdown" style="display: none"></div>
+        </div>
+    </div>
+
+    <div class="right" id="onlyright">
+        <!-- Hamburger icon for smaller screens -->
+        <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
+
+        <!-- Main navigation links -->
+        <ul class="icon-list">
+            <li>
+                <a href="#" class="dropdown-toggle" id="dropdownMenu" aria-haspopup="true" aria-expanded="false">
+                    <div class="welcome-message">
+                        Hi, <span class="welcome"><%= user.fullName %></span>
+                    </div>
+                    <i class="fas fa-caret-down" id="icon1"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <li><a href="/settings"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </li>
+            <li><a href="/add-products"><i class="fas fa-plus-square"></i> Add Products</a></li>
+            <li><a href="/customers"><i class="fas fa-users"></i> View Customers</a></li>
+            <li><a href="/view-reports"><i class="fas fa-chart-line"></i> View Reports</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="welcome-popup" class="popup">
+    <div class="popup-content">
+        <p class="welcome-note">
+            👋 Welcome back, <span class="d1"><%= user.fullName %></span>! Here's an overview of your platform's
+            performance.
+        </p>
+        <button id="close-popup" class="close-btn">&times;</button>
+    </div>
+</div>
+
+<!-- <a href="/api/products" aria-label="fetched products from database" class="fetched">Check Products</a> -->
+<div class="admin-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2 class="main">Shop-Cart Admin</h2>
+        </div>
+        <nav class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="/admin/dashboard"
+                    ><i class="fas fa-tachometer-alt"></i> Dashboard</a
+                    >
+                </li>
+                <li>
+                    <a href="/products"><i class="fas fa-box"></i> Products</a>
+                </li>
+                <li>
+                    <a href="/orders"><i class="fas fa-shopping-cart"></i> Orders</a>
+                </li>
+                <li>
+                    <a href="/customers"><i class="fas fa-users"></i> Customers</a>
+                </li>
+                <li>
+                    <a href="/promotions"
+                    ><i class="fas fa-bullhorn"></i> Promotions</a
+                    >
+                </li>
+                <li>
+                    <a href="/settings"><i class="fas fa-cog"></i> Settings</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Dashboard</h1>
+            <button class="logout-btn"><a href="/Logout">Logout</a></button>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-dollar-sign"></i></div>
+                <h3>Total Sales</h3>
+                <p>
+                    <% if (activities.totalSales) { %>
+                        $<%= activities.totalSales.toLocaleString() %>
+                    <% } else { %>
+                        No sales yet
+                    <% } %>
+                </p>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+                <h3>Total Orders</h3>
+                <p>
+                    <% if (activities.totalOrders) { %>
+                        <%= activities.totalOrders.toLocaleString() %>
+                    <% } else { %>
+                        No orders placed
+                    <% } %>
+                </p>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <h3>Customer Count</h3>
+                <div class="customer-count">
+                    <% if (customers && customers.length > 0) { %>
+                        <div class="count-wrapper">
+                            <h2><%= customers.length.toLocaleString() %></h2>
+                            <p class="info-text">Customers are actively engaging with your platform</p>
+                        </div>
+                    <% } else { %>
+                        <div class="count-wrapper no-customers">
+                            <h2>No customers yet</h2>
+                            <p class="info-text">Start promoting to attract customers.</p>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="icon"><i class="fas fa-box-open"></i></div>
+                <h3>Inventory Value</h3>
+                <p>
+                    <% if (activities.inventoryValue) { %>
+                        $<%= activities.inventoryValue.toLocaleString() %>
+                    <% } else { %>
+                        Inventory not available
+                    <% } %>
+                </p>
+            </div>
+        </section>
+
+
+        <section class="recent-activity">
+            <h2>Recent Activity</h2>
+
+            <% if (activities && activities.length > 0) { %>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Activity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% activities.forEach(activity => { %>
+                        <tr>
+                            <td><%= activity.date %></td>
+                            <td><%= activity.description %></td>
+                        </tr>
+                    <% }) %>
+                    </tbody>
+                </table>
+            <% } else { %>
+                <div class="no-activity">
+                    <img
+                            src="/images/1.webp"
+                            alt="No activity"
+                            class="no-activity-icon"
+                    />
+                    <p>
+                        No activities happened till now. Stay tuned for the latest
+                        updates.
+                    </p>
+                </div>
+            <% } %>
+        </section>
+    </main>
+</div>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>Shop-Cart</h3>
+            <p>
+                Your go-to platform for a seamless shopping experience. We offer a
+                curated selection of products with fast and secure delivery.
+            </p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Newsletter</h3>
+            <p>
+                Get the latest updates on our exclusive offers and new arrivals.
+            </p>
+            <form class="newsletter-form" action="/subscribe" method="post">
+                <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                />
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-social">
+            <h3>Connect with Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-b">
+        <p>
+            &copy; 2024 Shop-Cart. All Rights Reserved. | Designed by Akshat Angra
+        </p>
+    </div>
+</footer>
+<script>
+    window.onscroll = function () {
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        if (
+            document.body.scrollTop > 100 ||
+            document.documentElement.scrollTop > 100
+        ) {
+            scrollTopBtn.style.display = "flex";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    };
+    scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+</script>
+<script src="/app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    function toggleMenu() {
+        const iconList = document.querySelector(".icon-list");
+        iconList.classList.toggle("show");
+    }
+
+    var ctx = document.getElementById('salesChart').getContext('2d');
+    var salesChart = new Chart(ctx, {
+        type: 'line', // You can change this to 'bar', 'pie', etc.
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], // X-axis labels (e.g., months)
+            datasets: [{
+                label: 'Sales ($)',
+                data: [1200, 1900, 1500, 2200, 1700, 2500, 3000], // Sample sales data
+                borderColor: '#4bc0c0',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>

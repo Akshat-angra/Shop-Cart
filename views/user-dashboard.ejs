@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shop-Cart | User-Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Manrope:wght@200..800&display=swap"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/app.css"/>
+    <style>
+        #diffNav {
+            background-color: #ffffff !important;
+        }
+
+        .category-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 0;
+            border-bottom: 2px solid #eee;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-item {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .category-item:hover {
+            background-color: #0077cc;
+            color: #fff;
+        }
+
+        .category-item::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #0077cc;
+            bottom: 0;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .category-item:hover::after {
+            transform: scaleX(1);
+        }
+
+        .category-item.active {
+            background-color: #0077cc;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .category-nav {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 15px 0;
+            }
+
+            .category-item {
+                margin: 0;
+                font-size: 14px;
+                padding: 12px 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-nav {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                padding: 15px 0;
+            }
+
+            .category-item {
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+        }
+
+        .hero-section {
+            margin-top: -7px;
+            position: relative;
+            width: 100%;
+            max-height: 800px;
+            overflow: hidden;
+        }
+
+        .hero-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .hero-slide {
+            position: relative;
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            max-height: 600px;
+        }
+
+        .hero-navigation {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 3;
+            transform: translateY(-50%);
+        }
+
+        .hero-nav-btn {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 2rem;
+            z-index: 4;
+            transition: background-color 0.3s;
+            margin-top: -150px;
+        }
+
+        .hero-nav-btn:hover {
+            border: solid 2px #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .hero-slide h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-slide p {
+                font-size: 1rem;
+            }
+
+            .hero-section {
+                display: none;
+            }
+
+            .upright {
+                margin-top: 50px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-slide h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-slide p {
+                font-size: 0.9rem;
+            }
+
+            .hero-section {
+                display: none;
+            }
+
+            .upright {
+                margin-top: 50px !important;
+            }
+        }
+
+        .upright {
+            margin-top: -350px;
+        }
+
+        #heading3 {
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="navbar" id="diffNav">
+    <div class="left">
+        <h1 class="logo">shop <span class="logoin">cart</span></h1>
+        <div class="search-container">
+            <input
+                    type="text"
+                    placeholder="Start Shop-Cart..."
+                    class="search-input"
+            />
+            <div class="dropdown" id="dropdown" style="display: none"></div>
+        </div>
+    </div>
+
+    <div class="notification">
+        <span
+        ><span class="icon">🎉</span> Limited Time Offer: 20% Off on Your
+          First Purchase!</span
+        >
+    </div>
+
+    <div class="right" id="onlyright">
+        <ul class="icon-list">
+            <li>
+                <a
+                        href="#"
+                        class="dropdown-toggle"
+                        id="dropdownMenu"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                >
+                    Hi, <span class="welcome"><%= user.fullName %></span>
+                    <i class="fas fa-caret-down" id="icon1"></i>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu">
+                    <li>
+                        <a href="/settings"><i class="fas fa-cog"></i> Settings</a>
+                    </li>
+                    <li>
+                        <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </li>
+                    <li>
+                        <a href="/logout"><i class="fas fa-box"></i> My orders</a>
+                    </li>
+                </ul>
+            </li>
+            <li><i class="fas fa-shopping-cart"></i> <a href="/cart">Cart</a></li>
+        </ul>
+    </div>
+</div>
+
+<div id="welcome-popup" class="popup">
+    <div class="popup-content">
+        <p class="welcome-note">
+            👋 Welcome back, <span class="d1"><%= user.fullName %></span>! Explore
+            your dashboard and manage your activities seamlessly.
+        </p>
+        <button id="close-popup" class="close-btn">&times;</button>
+    </div>
+</div>
+
+<nav class="category-nav">
+    <a href="/category/electronics" class="category-item">Electronics</a>
+    <a href="/category/fashion" class="category-item">Fashion</a>
+    <a href="/category/home" class="category-item">Home & Living</a>
+    <a href="/category/sports" class="category-item">Sports</a>
+    <a href="/category/health" class="category-item">Health & Fitness</a>
+    <a href="/category/toys" class="category-item">Toys</a>
+    <a href="/category/books" class="category-item">Books</a>
+    <a href="/category/beauty" class="category-item">Beauty & Wellness</a>
+    <a href="/category/automotive" class="category-item">Automotive</a>
+    <a href="/category/automotive" class="category-item">Medicines</a>
+</nav>
+
+<!-- Moving Hero Section -->
+<div class="hero-section">
+    <div class="hero-slides" id="heroSlides">
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG24/Smart_Watches/SEP_24/Jup_teaser24/PC_Hero_3000x1200_20_Deals._CB562507633_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/sthaneka/Alphonsa/GW/Phase1/Revised/MLP_2X._CB562946188_.jpg"
+                    alt="New Arrivals"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/Jupiter/PC_Hero_3000x1200-2X._CB562883499_.jpg"
+                    alt="Winter Collection"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/Wireless/Madhav/jupiter24/Iphone/40249/r2/PC_Hero_3000x1200._CB544923700_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/WLA/2024/Jupiter24/Phase1/Gateway/Event/Unrec-3000x1200._CB562521064_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/sthaneka/Alphonsa/GW/NOV/BAU/GW_HERO_PC_1_2x._CB542130280_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/BAU_BTF/Nov/Unrec/Shoes/1/30003._CB542120021_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG24/Smart_Watches/MED_MAY/Tall_Hero_1500X600_BAU_NewLaunches._CB554931622_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+        <div class="hero-slide">
+            <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img22/vernac-t/header/PC_Hero_3000x1200_Toddler_1._CB562359921_.jpg"
+                    alt="Biggest Sale of the Season"
+                    class="hero-image"
+            />
+        </div>
+    </div>
+    <div class="hero-navigation">
+        <button class="hero-nav-btn" id="prevSlide">&#10094;</button>
+        <button class="hero-nav-btn" id="nextSlide">&#10095;</button>
+    </div>
+</div>
+
+<div class="upright">
+    <h1 class="heading">Explore products</h1>
+    <div id="product-container"></div>
+</div>
+
+<!-- <a href="/api/products" aria-label="fetched products from database" class="fetched">Check Products</a> -->
+<!-- <h1 class="heading">Explore products</h1> -->
+<!-- <div id="product-container" class="product-container"></div>
+<div id="categories-container"></div> -->
+<div class="loadbtn">
+    <button class="showMore" aria-label="show more products" id="loadMore">
+        Load More
+    </button>
+</div>
+<button id="scrollTopBtn" aria-label="Scroll to top">
+    <i class="fas fa-caret-up scroll-icon"></i>
+</button>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>Shop-Cart</h3>
+            <p>
+                Your go-to platform for a seamless shopping experience. We offer a
+                curated selection of products with fast and secure delivery.
+            </p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/shop">Shop</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/faq">FAQs</a></li>
+                <li><a href="/terms">Terms of Service</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-newsletter">
+            <h3>Newsletter</h3>
+            <p>
+                Get the latest updates on our exclusive offers and new arrivals.
+            </p>
+            <form class="newsletter-form" action="/subscribe" method="post">
+                <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                />
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-social">
+            <h3>Connect with Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-b">
+        <p>
+            &copy; 2024 Shop-Cart. All Rights Reserved. | Designed by Akshat Angra
+        </p>
+    </div>
+</footer>
+<script>
+    window.onscroll = function () {
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        if (
+            document.body.scrollTop > 100 ||
+            document.documentElement.scrollTop > 100
+        ) {
+            scrollTopBtn.style.display = "flex";
+        } else {
+            scrollTopBtn.style.display = "none";
+        }
+    };
+    scrollTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    });
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".hero-slide");
+
+    function showSlide(index) {
+        if (index >= slides.length) {
+            slideIndex = 0;
+        } else if (index < 0) {
+            slideIndex = slides.length - 1;
+        } else {
+            slideIndex = index;
+        }
+        document.getElementById("heroSlides").style.transform = `translateX(-${
+            slideIndex * 100
+        }%)`;
+    }
+
+    document
+        .getElementById("nextSlide")
+        .addEventListener("click", () => showSlide(slideIndex + 1));
+    document
+        .getElementById("prevSlide")
+        .addEventListener("click", () => showSlide(slideIndex - 1));
+
+    setInterval(() => {
+        showSlide(slideIndex + 1);
+    }, 5000);
+</script>
+<script src="/app.js"></script>
+</body>
+</html>

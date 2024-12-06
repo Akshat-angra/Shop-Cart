@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Category - Shop-Cart</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <!-- Link to your CSS file -->
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <a href="/" class="logo">Shop-Cart</a>
+        <nav>
+          <a href="/categories">Categories</a>
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>Sports Category</h1>
+        <p>Explore our wide range of sports equipment and accessories.</p>
+
+        <div class="sports-items">
+          <% sportsItems.forEach(item => { %>
+          <div class="item-card">
+            <img
+              src="<%= item.imageUrl %>"
+              alt="<%= item.name %>"
+              class="item-image"
+            />
+            <h2 class="item-name"><%= item.name %></h2>
+            <p class="item-description"><%= item.description %></p>
+            <span class="item-price">$<%= item.price.toFixed(2) %></span>
+            <button class="add-to-cart-button">Add to Cart</button>
+          </div>
+          <% }); %>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Shop-Cart. All rights reserved.</p>
+    </footer>
+
+    <style>
+      /* Basic styles for the page */
+      body {
+        font-family: "Manrope", sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #5a9edb;
+        padding: 15px 30px;
+        color: white;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+      }
+
+      .container {
+        padding: 40px;
+        text-align: center;
+      }
+
+      .sports-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      .item-card {
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 250px;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .item-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .item-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      .item-name {
+        font-size: 18px;
+        margin-top: 15px;
+      }
+
+      .item-description {
+        font-size: 14px;
+        color: #666;
+        margin: 10px 0;
+      }
+
+      .item-price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .add-to-cart-button {
+        background-color: #5a9edb;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .add-to-cart-button:hover {
+        background-color: #4a8ac7;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f0f0f0;
+        margin-top: 40px;
+      }
+    </style>
+  </body>
+</html>

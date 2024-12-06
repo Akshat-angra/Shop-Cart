@@ -1,0 +1,78 @@
+{
+  "categories": [
+    {
+      "category_name": "Electronics",
+      "products": [
+        {
+          "product_id": 1,
+          "name": "Smartphone",
+          "price": 299.99,
+          "discounted_price": 249.99,
+          "image": "smartphone.jpg",
+          "category_id": 1,
+          "tags": [
+            "smartphone",
+            "electronics",
+            "mobile"
+          ],
+          "stock": 100,
+          "rating": 4.5,
+          "description": "Latest model with powerful features."
+        },
+        {
+          "product_id": 2,
+          "name": "Laptop",
+          "price": 799.99,
+          "discounted_price": 699.99,
+          "image": "laptop.jpg",
+          "category_id": 1,
+          "tags": [
+            "laptop",
+            "electronics",
+            "computer"
+          ],
+          "stock": 50,
+          "rating": 4.7,
+          "description": "High-performance laptop for professionals."
+        }
+      ]
+    },
+    {
+      "category_name": "Clothing",
+      "products": [
+        {
+          "product_id": 3,
+          "name": "T-shirt",
+          "price": 19.99,
+          "discounted_price": 14.99,
+          "image": "tshirt.jpg",
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "t-shirt",
+            "fashion"
+          ],
+          "stock": 200,
+          "rating": 4.3,
+          "description": "Comfortable cotton T-shirt."
+        },
+        {
+          "product_id": 4,
+          "name": "Jeans",
+          "price": 49.99,
+          "discounted_price": 39.99,
+          "image": "jeans.jpg",
+          "category_id": 2,
+          "tags": [
+            "clothing",
+            "jeans",
+            "fashion"
+          ],
+          "stock": 150,
+          "rating": 4.6,
+          "description": "Stylish jeans for everyday wear."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap"
+            rel="stylesheet"
+    />
+    <title>Generate Report - Shop-Cart</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Manrope", sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fb;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container Styling */
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Heading */
+        .container h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Form Styling */
+        .report-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .report-form label {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #555;
+            text-align: left;
+        }
+
+        .report-form select,
+        .report-form input[type="date"],
+        .button {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d9e6;
+            border-radius: 8px;
+            font-size: 15px;
+            background-color: #fafbfc;
+            color: #444;
+            transition: border-color 0.3s ease;
+        }
+
+        .report-form select:focus,
+        .report-form input[type="date"]:focus {
+            outline: none;
+            border-color: #5a9edb;
+            box-shadow: 0 0 8px rgba(90, 158, 219, 0.4);
+        }
+
+        /* Error Message Styling */
+        .error-message {
+            color: #f44336;
+            font-size: 13px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        /* Button Styling */
+        .button {
+            background-color: #5a9edb;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #4a8ac7;
+            box-shadow: 0 4px 12px rgba(74, 138, 199, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px;
+            }
+
+            .container h1 {
+                font-size: 24px;
+            }
+
+            .button {
+                padding: 12px;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Generate New Report</h1>
+    <form
+            action="/generate-report"
+            method="POST"
+            class="report-form"
+            onsubmit="return validateForm()"
+    >
+        <!-- Report Type Selection -->
+        <label for="report-type">Report Type:</label>
+        <select id="report-type" name="reportType" aria-label="Select Report Type" required>
+            <option value="" disabled selected>Select report type</option>
+            <option value="sales">Sales Report</option>
+            <option value="inventory">Inventory Report</option>
+            <option value="customer">Customer Report</option>
+        </select>
+
+        <!-- Date Range Selection -->
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="startDate" aria-label="Select Start Date" required/>
+
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="endDate" aria-label="Select End Date" required/>
+        <div id="error-message" class="error-message" style="display: none;"></div>
+
+        <!-- Filter by Category -->
+        <label for="category">Product Category:</label>
+        <select id="category" name="category" aria-label="Select Product Category">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="accessories">Accessories</option>
+            <option value="health">Health & Personal Care</option>
+        </select>
+
+        <!-- Generate Report Button -->
+        <button type="submit" class="button">Generate Report</button>
+    </form>
+</div>
+
+<!-- JavaScript for Form Validation -->
+<script>
+    function validateForm() {
+        const startDate = document.getElementById("start-date").value;
+        const endDate = document.getElementById("end-date").value;
+        const errorMessage = document.getElementById("error-message");
+
+        if (new Date(startDate) > new Date(endDate)) {
+            errorMessage.style.display = "block";
+            errorMessage.textContent = "End date must be greater than or equal to start date.";
+            return false;
+        }
+
+        errorMessage.style.display = "none";
+        return true;
+    }
+</script>
+</body>
+</html>

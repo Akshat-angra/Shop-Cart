@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Shop-Cart | Forbidden</title>
+    <link rel="stylesheet" href="/app.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+            rel="stylesheet"
+    />
+    <style>
+        body {
+            font-family: "Manrope", sans-serif;
+            background-color: #f7f8fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            text-align: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            max-width: 1000px;
+            margin-top: 30px;
+            width: 100%;
+            padding: 0 30px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0 20px;
+            color: #d9534f;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .timestamp {
+            font-size: 0.9em;
+            color: #8c8c8c;
+        }
+
+        img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-left: 10vw;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d9534f;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        a:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <h1 class="logo">shop <span class="logoin">cart</span></h1>
+</div>
+
+<div class="error-content">
+    <div class="text-section">
+        <h1>403 Forbidden</h1>
+        <p><%= message %></p>
+        <p class="timestamp">Error Code: <%= code %> | Time: <%= timestamp %></p>
+        <a href="/">Go to Homepage</a>
+    </div>
+    <img src="/images/Error.webp" alt="403 Forbidden"/>
+</div>
+</body>
+</html>

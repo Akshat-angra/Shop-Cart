@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Shop-Cart</title>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        color: #121224;
+        background-color: #f4f6f9;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .contact-section {
+        background-color: #f4f7fb;
+        padding: 60px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-top: 30px;
+        margin-bottom: 40px !important;
+      }
+
+      .contact-heading {
+        font-size: 2.8rem;
+        color: #2c3e50;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .contact-subtext {
+        font-size: 1rem;
+        color: #6c7a89;
+        margin-bottom: 40px;
+      }
+
+      .contact-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .contact-info {
+        flex: 1;
+        min-width: 280px;
+        max-width: 400px;
+        text-align: left;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .info-heading {
+        font-size: 1.8rem;
+        color: #34495e;
+        margin-bottom: 15px;
+      }
+
+      .info-text {
+        font-size: 1rem;
+        color: #7f8c8d;
+        margin-bottom: 20px;
+      }
+
+      .contact-details {
+        list-style: none;
+        padding: 0;
+      }
+
+      .contact-details li {
+        font-size: 1rem;
+        color: #2c3e50;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-details i {
+        color: #3498db;
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      .contact-form {
+        flex: 2;
+        min-width: 280px;
+        max-width: 600px;
+        text-align: left;
+      }
+
+      .contact-form label {
+        font-size: 1rem;
+        color: #34495e;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #dfe4ea;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #3498db;
+        outline: none;
+      }
+
+      .submit-btn {
+        display: inline-block;
+        background-color: #3498db;
+        color: #ffffff;
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit-btn:hover {
+        background-color: #2980b9;
+      }
+
+      @media (max-width: 768px) {
+        .contact-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .contact-info {
+          text-align: center;
+        }
+
+        .contact-form {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="left">
+        <h1 class="logo">shop <span class="logoin">cart</span></h1>
+        <div class="search-container">
+          <input
+            type="text"
+            placeholder="Start browsing products..."
+            class="search-input"
+          />
+          <div class="dropdown" id="dropdown" style="display: none"></div>
+        </div>
+      </div>
+
+      <!-- <div class="notification">
+        <span
+          ><span class="icon">🎉</span> Limited Time Offer: 20% Off on Your
+          First Purchase!</span
+        >
+      </div> -->
+
+      <div class="right">
+        <ul class="icon-list">
+          <li><a href="/" id="ahov">Home</a></li>
+          <li>
+            <a href="/about.html" id="ahov">About Us</a>
+          </li>
+          <li>
+            <a href="/contact" id="ahov">Contact Us</a>
+          </li>
+          <li>
+            <i class="fas fa-sign-in-alt"></i>
+            <a href="/login" id="ahov">Login</a>
+          </li>
+          <li>
+            <i class="fas fa-user-plus"></i>
+            <a href="/register" id="ahov">Signup</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <section class="contact-section">
+      <h2 class="contact-heading">Contact Us</h2>
+      <p class="contact-subtext">
+        We're here to assist you! Fill out the form below or reach us directly
+        at
+        <a href="mailto:support@shopcart.com">support@shopcart.com</a>.
+      </p>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3 class="info-heading">Get in Touch</h3>
+          <p class="info-text">
+            For any inquiries or support, please contact us using the
+            information below:
+          </p>
+          <ul class="contact-details">
+            <li><i class="fas fa-phone"></i> Phone: +91 8168754874</li>
+            <li><i class="fas fa-envelope"></i> Email: support@shopcart.com</li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i> Address: 621 sec 4,
+              Bengaluru, Karnataka
+            </li>
+          </ul>
+        </div>
+        <form class="contact-form" action="/submit-contact" method="POST">
+          <label for="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="Your Name"
+          />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Your Email"
+          />
+
+          <label for="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Your Message"
+          ></textarea>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>Shop-Cart</h3>
+          <p>
+            Your go-to platform for a seamless shopping experience. We offer a
+            curated selection of products with fast and secure delivery.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/faq">FAQs</a></li>
+            <li><a href="/terms">Terms of Service</a></li>
+            <li><a href="/privacy">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h3>Newsletter</h3>
+          <p>
+            Get the latest updates on our exclusive offers and new arrivals.
+          </p>
+          <form class="newsletter-form" action="/subscribe" method="post">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-social">
+          <h3>Connect with Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Shop-Cart. All Rights Reserved. | Designed by Akshat Angra
+        </p>
+      </div>
+    </footer>
+    <script src="app.js"></script>
+  </body>
+</html>

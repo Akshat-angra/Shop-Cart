@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop-Cart | Add Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      body {
+        font-family: "Manrope", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa, #c3d6e4);
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+
+      h1 {
+        text-align: left;
+        color: #4a90e2;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+        background-image: linear-gradient(90deg, #27ddb1 -32.8%, #6d4aff);
+        -webkit-background-clip: text;
+        color: transparent;
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 0 10px;
+        font-family: "Caveat", cursive;
+        animation: fadeInDown 1s ease-in-out;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Form styles */
+      form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        transition: box-shadow 0.3s ease;
+      }
+
+      form:hover {
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: relative;
+      }
+
+      label {
+        font-weight: bold;
+        color: #4a90e2;
+        font-size: 1.2rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #d6e9f4;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+        outline: none;
+      }
+
+      button {
+        padding: 14px 20px;
+        background-color: #4a90e2;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      button:hover {
+        background-color: #357abd;
+        transform: translateY(-3px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        form {
+          padding: 20px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add Product</h1>
+    <form action="/products/add" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Product Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          name="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea
+          class="form-control"
+          id="description"
+          name="description"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          step="0.01"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input
+          type="number"
+          class="form-control"
+          id="quantity"
+          name="quantity"
+          min="0"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input
+          type="file"
+          class="form-control"
+          id="image"
+          name="image"
+          accept="image/*"
+          required
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Product</button>
+    </form>
+  </body>
+</html>

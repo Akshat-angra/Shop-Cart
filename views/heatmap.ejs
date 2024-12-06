@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 Monthly Login Activity</title>
+    <link rel="stylesheet" href="/app.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            rel="stylesheet"
+    />
+    <style>
+        body {
+            font-family: "Manrope", system-ui;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #2a3a4b;
+            font-weight: 700;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            color: #78839b;
+            margin-bottom: 30px;
+        }
+
+        .heatmap {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 15px;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Month Grid Styles */
+        .month-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .month {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+            width: 90px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            user-select: none;
+        }
+
+        .month:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Dynamic Colors Based on Logins */
+        .month[data-logins="0"] {
+            background-color: #e1f5fe;
+            color: #1e88e5;
+        }
+
+        .month[data-logins="1"] {
+            background-color: #bbdefb;
+            color: #1976d2;
+        }
+
+        .month[data-logins="2"] {
+            background-color: #90caf9;
+            color: #1565c0;
+        }
+
+        .month[data-logins="3"] {
+            background-color: #64b5f6;
+            color: #0d47a1;
+        }
+
+        .month[data-logins="4"] {
+            background-color: #42a5f5;
+            color: #01579b;
+        }
+
+        .month[data-logins="5"] {
+            background-color: #2196f3;
+            color: #003c8f;
+        }
+
+        .month[data-logins="6"] {
+            background-color: #1e88e5;
+            color: #002f6c;
+        }
+
+        .month[data-logins="7"] {
+            background-color: #1976d2;
+            color: #001e44;
+        }
+
+        .month[data-logins="8"] {
+            background-color: #1565c0;
+            color: #000d30;
+        }
+
+        .month[data-logins="9"] {
+            background-color: #0d47a1;
+            color: #000a1d;
+        }
+
+        .month[data-logins="10"] {
+            background-color: #0c36a1;
+            color: #00071a;
+        }
+
+        .month[data-logins="11"] {
+            background-color: #0b28a0;
+            color: #000418;
+        }
+
+        .month[data-logins="12"] {
+            background-color: #0a1d8f;
+            color: #000210;
+        }
+
+        .month::after {
+            content: attr(title);
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 6px 10px;
+            border-radius: 5px;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .month:hover::after {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Month Name Styling */
+        .month-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        /* Year Heading */
+        h2 {
+            font-size: 32px;
+            color: #2d3e50;
+            margin-top: 50px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .heatmap {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .heatmap {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .heatmap {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>2024 Monthly Login Activity</h1>
+<p>User: <%= email %></p>
+
+<div class="heatmap">
+    <h2>2024 Activity</h2>
+    <% for (let month = 0; month < 12; month++) { %>
+        <div class="month-container">
+            <div
+                    class="month"
+                    data-logins="<%= monthwiseData[2024][month] || 0 %>"
+                    title="<%= monthwiseData[2024][month] || 0 %> logins in <%= month + 1 %>">
+                <div><%= monthwiseData[2024][month] || 0 %></div>
+            </div>
+            <div class="month-name">
+                <%= ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][month] %>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+</body>
+</html>
