@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
     session({
@@ -93,7 +93,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
     storage: storage,
-    limits: {fileSize: 1000000},
+    limits: { fileSize: 1000000 },
     fileFilter: function (req, file, cb) {
         const fileTypes = /jpeg|jpg|png|gif/;
         const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
@@ -128,15 +128,15 @@ function hasRole(role) {
 }
 
 app.get("/register", (req, res) => {
-    res.render("register", {errorMessage: null});
+    res.render("register", { errorMessage: null });
 });
 
 app.post('/register', async (req, res) => {
     try {
-        const {fullName, email, password, phoneNumber, roles} = req.body;
+        const { fullName, email, password, phoneNumber, roles } = req.body;
 
         if (!fullName || !email || !password || !phoneNumber || !roles) {
-            return res.render('register', {errorMessage: 'All fields are required.'});
+            return res.render('register', { errorMessage: 'All fields are required.' });
         }
 
         const saltRounds = 10;
@@ -157,20 +157,20 @@ app.post('/register', async (req, res) => {
         if (err.errors && err.errors.password) {
             errorMessage = err.errors.password.message;
         }
-        res.render('register', {errorMessage});
+        res.render('register', { errorMessage });
     }
 });
 
 
 app.get("/login", (req, res) => {
-    res.render("login", {errorMessage: null});
+    res.render("login", { errorMessage: null });
 });
 
 app.post("/login", async (req, res) => {
-    const {email, password} = req.body;
+    const { email, password } = req.body;
 
     try {
-        const user = await User.findOne({email});
+        const user = await User.findOne({ email });
         if (!user) {
             return res.render("login", {
                 errorMessage: "* Invalid email or password.",
@@ -208,10 +208,10 @@ app.post("/login", async (req, res) => {
 app.get("/api/products", async (req, res) => {
     try {
         const products = await fetchProducts();
-        res.json({products});
+        res.json({ products });
     } catch (err) {
         console.error("Error in /api/products endpoint:", err);
-        res.status(500).json({message: "Server error"});
+        res.status(500).json({ message: "Server error" });
     }
 });
 
@@ -227,10 +227,10 @@ app.get("/dashboard/shop-cart", isAuthenticated, (req, res) => {
 app.get("/admin/dashboard", isAuthenticated, hasRole("admin"), async (req, res) => {
     try {
         const activities = [];
-        const customers = await User.find({roles: {$ne: "admin"}});
+        const customers = await User.find({ roles: { $ne: "admin" } });
         const userFirstName = req.session.user.fullName.split(" ")[0];
         res.render("admin-dashboard", {
-            user: {fullName: userFirstName},
+            user: { fullName: userFirstName },
             activities: activities,
             customers: customers
         });
@@ -244,12 +244,12 @@ app.get("/admin/dashboard", isAuthenticated, hasRole("admin"), async (req, res) 
 
 app.get("/user/dashboard", isAuthenticated, hasRole("user"), (req, res) => {
     const userFirstName = req.session.user.fullName.split(" ")[0];
-    res.render("user-dashboard", {user: {fullName: userFirstName}});
+    res.render("user-dashboard", { user: { fullName: userFirstName } });
 });
 
 app.get("/user/checkout", hasRole("user"), (req, res) => {
     const userFirstName = req.session.user.fullName.split(" ")[0];
-    res.render("user-checkout", {user: {fullName: userFirstName}});
+    res.render("user-checkout", { user: { fullName: userFirstName } });
 });
 
 app.get("/add-products", isAuthenticated, hasRole("admin"), (req, res) => {
@@ -258,18 +258,18 @@ app.get("/add-products", isAuthenticated, hasRole("admin"), (req, res) => {
 
 app.delete('/delete-user/:email', isAuthenticated, hasRole("admin"), async (req, res) => {
     try {
-        const {email} = req.params;
+        const { email } = req.params;
 
-        const user = await User.findOneAndDelete({email});
+        const user = await User.findOneAndDelete({ email });
 
         if (!user) {
-            return res.status(404).json({success: false, message: "User not found"});
+            return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        res.status(200).json({success: true, message: "User deleted successfully"});
+        res.status(200).json({ success: true, message: "User deleted successfully" });
     } catch (error) {
         console.error("Error deleting user:", error);
-        res.status(500).json({success: false, message: "Server error"});
+        res.status(500).json({ success: false, message: "Server error" });
     }
 });
 
@@ -286,7 +286,7 @@ app.get("/settings", isAuthenticated, (req, res) => {
 });
 
 app.post("/settings", async (req, res) => {
-    const {fullName, email, password} = req.body;
+    const { fullName, email, password } = req.body;
 
     try {
         const userId = req.session.user.id;
@@ -331,7 +331,7 @@ app.post("/settings", async (req, res) => {
 });
 
 app.post('/subscribe', (req, res) => {
-    const {email} = req.body;
+    const { email } = req.body;
 
     const userRole = req.session.userRole || 'guest';
 
@@ -344,22 +344,22 @@ app.post('/subscribe', (req, res) => {
 
 app.get('/some-page', (req, res) => {
     const userRole = req.user.role;
-    res.render('some-page', {userRole});
+    res.render('some-page', { userRole });
 });
 
 app.get('/promotions', (req, res) => {
     const promotions = [
-        {name: 'Summer Sale', discount: '20%', validUntil: '2024-08-31'},
-        {name: 'Black Friday Sale', discount: '50%', validUntil: '2024-11-30'},
+        { name: 'Summer Sale', discount: '20%', validUntil: '2024-08-31' },
+        { name: 'Black Friday Sale', discount: '50%', validUntil: '2024-11-30' },
     ];
-    res.render('promotion', {promotions});
+    res.render('promotion', { promotions });
 });
 
 
 app.get("/customers", isAuthenticated, hasRole("admin"), async (req, res) => {
     try {
-        const customers = await User.find({roles: {$ne: "admin"}});
-        res.render("customer", {customers});
+        const customers = await User.find({ roles: { $ne: "admin" } });
+        res.render("customer", { customers });
     } catch (err) {
         console.error(err);
         res.status(500).send("Server error");
@@ -370,16 +370,16 @@ app.get("/customer/:email", isAuthenticated, async (req, res) => {
     console.log("User email:", req.session.user.email);
     console.log("Requested email:", req.params.email);
 
-    const {email} = req.params;
+    const { email } = req.params;
 
     try {
-        const customer = await User.findOne({email});
+        const customer = await User.findOne({ email });
 
         if (!customer) {
             return res.status(404).send("Customer not found");
         }
 
-        res.render("customerProfile", {customer});
+        res.render("customerProfile", { customer });
     } catch (err) {
         console.error(err);
         res.status(500).send("Server error");
@@ -387,15 +387,15 @@ app.get("/customer/:email", isAuthenticated, async (req, res) => {
 });
 
 app.get("/user/:email/dashboard", isAuthenticated, hasRole("admin"), async (req, res) => {
-    const {email} = req.params;
+    const { email } = req.params;
 
     try {
-        const customer = await User.findOne({email});
+        const customer = await User.findOne({ email });
         if (!customer) {
             return res.status(404).send("Customer not found");
         }
         const userFirstName = customer.fullName.split(" ")[0];
-        res.render("user-dashboard", {user: {fullName: userFirstName}});
+        res.render("user-dashboard", { user: { fullName: userFirstName } });
     } catch (err) {
         console.error(err);
         res.status(500).send("Server error");
@@ -403,14 +403,14 @@ app.get("/user/:email/dashboard", isAuthenticated, hasRole("admin"), async (req,
 });
 
 const reports = [
-    {id: 1, type: 'User Activity', date: new Date(), status: 'Completed'},
-    {id: 2, type: 'Transaction', date: new Date(), status: 'In Progress'},
+    { id: 1, type: 'User Activity', date: new Date(), status: 'Completed' },
+    { id: 2, type: 'Transaction', date: new Date(), status: 'In Progress' },
 ];
 
 app.get('/view-reports', async (req, res) => {
     try {
         // const reports = await Report.find(); // enable when database has reports
-        res.render('view-reports', {reports});
+        res.render('view-reports', { reports });
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
@@ -462,7 +462,7 @@ async function getProductsFromDatabase() {
 
 app.get('/inventory', async (req, res) => {
     const products = await getProductsFromDatabase();
-    res.render('inventory', {products});
+    res.render('inventory', { products });
 });
 
 app.get('/cart', (req, res) => {
@@ -474,17 +474,17 @@ app.get('/shop', (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    const {email} = req.body;
+    const { email } = req.body;
 
-    if (!email) return res.status(400).json({error: 'Email is required'});
+    if (!email) return res.status(400).json({ error: 'Email is required' });
 
     try {
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize to the start of the day
+        today.setHours(0, 0, 0, 0);
 
-        let activity = await LastLoginActivity.findOne({email});
+        let activity = await LastLoginActivity.findOne({ email });
         if (!activity) {
-            activity = new LastLoginActivity({email, lastLoginDates: [today]});
+            activity = new LastLoginActivity({ email, lastLoginDates: [today] });
         } else {
             const alreadyLogged = activity.lastLoginDates.some(
                 (date) => date.getTime() === today.getTime()
@@ -495,18 +495,18 @@ app.post('/login', async (req, res) => {
         }
 
         await activity.save();
-        res.status(200).json({message: 'Login logged successfully'});
+        res.status(200).json({ message: 'Login logged successfully' });
     } catch (err) {
         console.error('Error logging login activity:', err);
-        res.status(500).json({error: 'Failed to log login activity'});
+        res.status(500).json({ error: 'Failed to log login activity' });
     }
 });
 
 app.get('/user/:email/heatmap', async (req, res) => {
-    const {email} = req.params;
+    const { email } = req.params;
 
     try {
-        const activity = await LastLoginActivity.findOne({email});
+        const activity = await LastLoginActivity.findOne({ email });
 
         if (!activity) {
             return res.status(404).send('No login activity found for this user.');
@@ -526,7 +526,7 @@ app.get('/user/:email/heatmap', async (req, res) => {
             return acc;
         }, {});
 
-        res.render('heatmap', {email, monthwiseData});
+        res.render('heatmap', { email, monthwiseData });
     } catch (error) {
         console.error('Error retrieving login activity:', error);
         res.status(500).send('Error retrieving login activity');
@@ -534,11 +534,11 @@ app.get('/user/:email/heatmap', async (req, res) => {
 });
 
 app.get('/user/:email/heatmap', async (req, res) => {
-    const {email} = req.params;
+    const { email } = req.params;
 
     try {
-        const activity = await LastLoginActivity.findOne({email});
-        const user = await User.findOne({email});
+        const activity = await LastLoginActivity.findOne({ email });
+        const user = await User.findOne({ email });
 
         if (!activity || !user) {
             return res.status(404).send('User or activity not found.');
@@ -587,21 +587,19 @@ app.get("/logout", (req, res) => {
     });
 });
 
-app.get('/category/:categoryName', async (req, res) => {
-    const categoryName = req.params.categoryName;
+const recentOrders = [
+    { id: 1, status: 'Shipped', items: 2, total: 30.00, dispatched: true },
+    { id: 2, status: 'Processing', items: 1, total: 15.50, dispatched: false },
+    { id: 3, status: 'Shipped', items: 3, total: 45.00, dispatched: true }
+];
 
-    try {
-        const products = await getCategoryProducts(categoryName);
-
-        if (!products || products.length === 0) {
-            return res.status(404).send("No products found for this category.");
-        }
-
-        // Render category page with the products
-        res.render('categoryPage', {categoryName, products});
-    } catch (error) {
-        console.error("Error fetching category data:", error);
-        res.status(500).send("Error fetching category data");
+// Route to render 'my-orders' page
+app.get('/my-orders', (req, res) => {
+    // If there are no orders, send an empty array
+    if (recentOrders.length === 0) {
+        res.render('my-orders', { orders: null });
+    } else {
+        res.render('my-orders', { orders: recentOrders });
     }
 });
 

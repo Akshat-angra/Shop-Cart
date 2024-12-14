@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders - Shop-Cart</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary-color: #4a6cf7;
+        --secondary-color: #6b7280;
+        --background-color: #f4f5f7;
+        --white: #ffffff;
+        --text-dark: #1f2937;
+        --text-light: #6b7280;
+        --border-color: #e5e7eb;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --info-color: #3b82f6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Manrope", system-ui;
+        background-color: var(--background-color);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .brand-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0;
+        background-color: var(--white);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .brand-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .brand-logo-icon {
+        width: 40px;
+        height: 40px;
+        background-color: var(--primary-color);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        font-size: 20px;
+      }
+
+      .brand-logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .orders-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .orders-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .filter-section {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .filter-btn {
+        background-color: var(--white);
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        padding: 10px 15px;
+        border-radius: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn.active {
+        background-color: var(--primary-color);
+        color: var(--white);
+        border-color: var(--primary-color);
+      }
+
+      .orders-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .order-card {
+        background-color: var(--white);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .order-card:hover {
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        transform: translateY(-5px);
+      }
+
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .order-number {
+        font-weight: 600;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .order-status {
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 5px 10px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .status-processing {
+        background-color: rgba(59, 130, 246, 0.1);
+        color: var(--info-color);
+      }
+
+      .status-shipped {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--success-color);
+      }
+
+      .status-delivered {
+        background-color: rgba(16, 185, 129, 0.2);
+        color: var(--success-color);
+      }
+
+      .status-cancelled {
+        background-color: rgba(239, 68, 68, 0.1);
+        color: var(--error-color);
+      }
+
+      .status-pending {
+        background-color: rgba(245, 158, 11, 0.1);
+        color: var(--warning-color);
+      }
+
+      .order-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      .order-detail {
+        background-color: var(--background-color);
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .order-detail-label {
+        font-size: 0.75rem;
+        color: var(--text-light);
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .order-detail-value {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .order-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .btn {
+        padding: 10px 15px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: var(--white);
+      }
+
+      .btn-secondary {
+        background-color: var(--white);
+        color: var(--text-dark);
+        border: 1px solid var(--border-color);
+      }
+
+      .no-orders {
+        text-align: center;
+        background-color: var(--white);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 50px;
+      }
+
+      .no-orders-icon {
+        font-size: 4rem;
+        color: var(--secondary-color);
+        margin-bottom: 20px;
+      }
+
+      .no-orders-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+
+      .no-orders-subtitle {
+        color: var(--text-light);
+        margin-bottom: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .orders-header {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .filter-section {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="brand-header">
+      <div class="brand-logo">
+        <div class="brand-logo-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="brand-logo-text">Shop-Cart</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="orders-header">
+        <h1>My Orders</h1>
+        <div class="filter-section">
+          <button class="filter-btn active" data-filter="all">
+            <i class="fas fa-list"></i> All Orders
+          </button>
+          <button class="filter-btn" data-filter="pending">
+            <i class="fas fa-hourglass-half"></i> Pending
+          </button>
+          <button class="filter-btn" data-filter="processing">
+            <i class="fas fa-spinner"></i> Processing
+          </button>
+          <button class="filter-btn" data-filter="shipped">
+            <i class="fas fa-truck"></i> Shipped
+          </button>
+          <button class="filter-btn" data-filter="delivered">
+            <i class="fas fa-check-circle"></i> Delivered
+          </button>
+          <button class="filter-btn" data-filter="cancelled">
+            <i class="fas fa-times-circle"></i> Cancelled
+          </button>
+        </div>
+      </div>
+
+      <div class="orders-grid">
+        <% if (orders && orders.length > 0) { %> <% orders.forEach(order => { %>
+        <div class="order-card" data-status="<%= order.status.toLowerCase() %>">
+          <div class="order-header">
+            <span class="order-number">
+              <i class="fas fa-receipt"></i> Order #<%= order.id %>
+            </span>
+            <span class="order-status status-<%= order.status.toLowerCase() %>">
+              <% const statusIcons = { 'Pending': 'fa-hourglass-half',
+              'Processing': 'fa-spinner', 'Shipped': 'fa-truck', 'Delivered':
+              'fa-check-circle', 'Cancelled': 'fa-times-circle' }; const icon =
+              statusIcons[order.status] || 'fa-shopping-bag'; %>
+              <i class="fas <%= icon %>"></i> <%= order.status %>
+            </span>
+          </div>
+
+          <div class="order-details">
+            <div class="order-detail">
+              <span class="order-detail-label">
+                <i class="fas fa-calendar-alt"></i> Order Date
+              </span>
+              <span class="order-detail-value">
+                <%= new Date(order.createdAt).toLocaleDateString() %>
+              </span>
+            </div>
+            <div class="order-detail">
+              <span class="order-detail-label">
+                <i class="fas fa-box"></i> Total Items
+              </span>
+              <span class="order-detail-value"><%= order.items %></span>
+            </div>
+            <div class="order-detail">
+              <span class="order-detail-label">
+                <i class="fas fa-dollar-sign"></i> Total Amount
+              </span>
+              <span class="order-detail-value"
+                >$<%= order.total.toFixed(2) %></span
+              >
+            </div>
+            <div class="order-detail">
+              <span class="order-detail-label">
+                <i class="fas fa-credit-card"></i> Payment Method
+              </span>
+              <span class="order-detail-value"
+                ><%= order.paymentMethod || 'Credit Card' %></span
+              >
+            </div>
+          </div>
+
+          <div class="order-actions">
+            <a href="/order-details/<%= order.id %>" class="btn btn-primary">
+              <i class="fas fa-eye"></i> View Details
+            </a>
+            <% if (order.status === 'Processing' || order.status === 'Pending')
+            { %>
+            <a href="#" class="btn btn-secondary">
+              <i class="fas fa-times"></i> Cancel Order
+            </a>
+            <% } %>
+          </div>
+        </div>
+        <% }); %> <% } else { %>
+        <div class="no-orders">
+          <div class="no-orders-icon">
+            <i class="fas fa-shopping-basket"></i>
+          </div>
+          <h2 class="no-orders-title">No Orders Yet</h2>
+          <p class="no-orders-subtitle">
+            You haven't placed any orders. Explore our products and start
+            shopping today!
+          </p>
+          <a href="/shop" class="btn btn-primary">
+            <i class="fas fa-shopping-cart"></i> Shop Now
+          </a>
+        </div>
+        <% } %>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const orderCards = document.querySelectorAll(".order-card");
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active class from all buttons
+            filterBtns.forEach((b) => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filter = btn.dataset.filter;
+
+            orderCards.forEach((card) => {
+              if (filter === "all" || card.dataset.status === filter) {
+                card.style.display = "flex";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+
+        // Make entire order card clickable
+        orderCards.forEach((card) => {
+          card.addEventListener("click", (e) => {
+            if (!e.target.closest(".btn")) {
+              const detailsLink = card.querySelector(".btn-primary");
+              if (detailsLink) {
+                window.location.href = detailsLink.href;
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
